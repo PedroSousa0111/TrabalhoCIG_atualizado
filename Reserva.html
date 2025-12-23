@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+<!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-dark py-3">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white fw-bold fs-2" href="#">StayFinder</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5 px-3" href="index.html">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fs-5 px-3" href="Promoções.html">Promoções</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link text-white fs-5 px-3" href="Contactos.html">Contactos</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link text-white fs-5 px-3" href="InciarSessão.html">Iniciar Sessão</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="container my-5 p-4 bg-white rounded shadow">
+    <h2 class="mb-4 fw-bold">Efetuar Reserva</h2>
+
+    <!-- Nome do alojamento carregado pela URL -->
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Alojamento</label>
+        <input type="text" id="alojamentoNome" class="form-control" readonly>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Check-in</label>
+            <input type="date" id="checkin" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Check-out</label>
+            <input type="date" id="checkout" class="form-control">
+        </div>
+    </div>
+
+    <div class="row g-3 mt-1">
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Hóspedes</label>
+            <input type="number" id="hospedes" class="form-control" min="1" value="1">
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Quartos</label>
+            <select id="quartos" class="form-select">
+                <option value="1">1 Quarto</option>
+                <option value="2">2 Quartos</option>
+                <option value="3">3 Quartos</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Tipologia</label>
+            <select id="tipologia" class="form-select">
+                <option value="T0">T0</option>
+                <option value="T1">T1</option>
+                <option value="T2">T2</option>
+                <option value="T3">T3</option>
+            </select>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Custo total (€)</label>
+        <input type="text" id="total" class="form-control" readonly>
+    </div>
+
+    <button class="btn btn-primary w-100 py-2 fw-bold" onclick="calcularReserva()">
+        Calcular Reserva
+    </button>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white pt-5 pb-3 mt-5">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Logo + Descrição -->
+            <div class="col-md-4 mb-4">
+                <h3 class="fw-bold">StayFinder</h3>
+                <p class="mt-2">
+                    A melhor plataforma para encontrar hotéis, resorts, pousadas e alojamentos locais com os melhores preços.
+                </p>
+
+                <!-- Redes sociais -->
+                <div class="mt-3 d-flex gap-3">
+                    <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Navegação -->
+            <div class="col-md-2 mb-4">
+                <h5 class="fw-semibold mb-3">Navegação</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="footer-link">Página inicial</a></li>
+                    <li><a href="Promoções.html" class="footer-link">Promoções</a></li>
+                    <li><a href="Contactos.html" class="footer-link">Contactos</a></li>
+                    <li><a href="InciarSessão.html" class="footer-link">Iniciar sessão</a></li>
+                </ul>
+            </div>
+
+            <!-- Tipos de alojamento -->
+            <div class="col-md-3 mb-4">
+                <h5 class="fw-semibold mb-3">Alojamentos</h5>
+                <ul class="list-unstyled">
+                    <li><a href="Hoteis.html" class="footer-link">Hotéis</a></li>
+                    <li><a href="Resorts.html" class="footer-link">Resorts</a></li>
+                    <li><a href="Pousadas.html" class="footer-link">Pousadas</a></li>
+                    <li><a href="AlojamentoLocal.html" class="footer-link">Alojamento Local</a></li>
+                </ul>
+            </div>
+
+            <!-- Contactos -->
+            <div class="col-md-3 mb-4">
+                <h5 class="fw-semibold mb-3">Contactos</h5>
+                <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i> suporte@stayfinder.com</p>
+                <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i> +351 912 345 678</p>
+                <p><i class="bi bi-geo-alt-fill me-2"></i> Lisboa, Portugal</p>
+            </div>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <!-- Direitos reservados -->
+        <div class="text-center mt-3">
+            <p class="mb-0">© 2025 StayFinder — Todos os direitos reservados.</p>
+        </div>
+
+    </div>
+</footer>
+
+
+</body>
+</html>
